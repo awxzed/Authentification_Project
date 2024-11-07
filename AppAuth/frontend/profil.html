@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mon Profil</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+        h1 {
+            color: #333;
+        }
+        .profile-container {
+            background-color: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 500px;
+            box-sizing: border-box;
+            text-align: center;
+        }
+        label {
+            font-weight: bold;
+            margin-bottom: 5px;
+            display: block;
+            color: #555;
+        }
+        input {
+            width: 100%;
+            padding: 12px;
+            margin: 10px 0;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+        .btn {
+            padding: 12px 20px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            width: 100%;
+        }
+        .btn:hover {
+            background-color: #0056b3;
+        }
+        .avatar {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            margin: 20px 0;
+            object-fit: cover;
+        }
+        .footer {
+            position: absolute;
+            bottom: 20px;
+            text-align: center;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Mon Profil</h1>
+    <div class="profile-container">
+        <h2>Modifier mes informations</h2>
+
+        <!-- Avatar -->
+        <img src="https://via.placeholder.com/100" alt="Avatar" class="avatar" id="avatarPreview">
+        <input type="file" id="avatarInput" accept="image/*" onchange="previewAvatar(event)">
+
+        <!-- Formulaire de modification -->
+        <form action="#" method="POST">
+            <label for="username">Nom d'utilisateur :</label>
+            <input type="text" id="username" name="username" value="Utilisateur123" required><br>
+
+            <label for="name">Nom complet :</label>
+            <input type="text" id="name" name="name" value="Jean Dupont" required><br>
+
+            <label for="age">Âge :</label>
+            <input type="number" id="age" name="age" value="25" required><br>
+
+            <button type="submit" class="btn">Mettre à jour</button>
+        </form>
+    </div>
+
+    <div class="footer">
+        <a href="index.html" class="btn">Accueil</a>
+    </div>
+
+    <script>
+        function previewAvatar(event) {
+            const file = event.target.files[0];
+            const reader = new FileReader();
+
+            reader.onload = function() {
+                const avatarPreview = document.getElementById("avatarPreview");
+                avatarPreview.src = reader.result;
+            }
+
+            if (file) {
+                reader.readAsDataURL(file);
+            }
+        }
+    </script>
+
+</body>
+</html>
